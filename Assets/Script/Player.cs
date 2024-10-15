@@ -9,27 +9,33 @@ public class Player : MonoBehaviour
 {
     public Laser laserPrefab;
     Laser laser;
-    float speed = 5f;
+
+    public float laserCoolDown = 0.36f;
+    float timeSinceShot = 0f;
+    float speed = 8f;
 
     // Update is called once per frame
     void Update()
     {
         Vector3 position = transform.position;
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             position.x -= speed * Time.deltaTime;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             position.x += speed * Time.deltaTime;
         }
 
         transform.position = position;
 
-        if (Input.GetKeyDown(KeyCode.Space) && laser == null)
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= timeSinceShot + laserCoolDown)
         {
+            timeSinceShot = Time.time;
             laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+
+
         }
     }
 
