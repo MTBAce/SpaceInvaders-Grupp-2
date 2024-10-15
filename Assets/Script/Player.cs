@@ -8,13 +8,20 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Laser laserPrefab;
+    public ScreenShake screenShake;
+
     Laser laser;
 
     public float laserCoolDown = 0.36f;
     float timeSinceShot = 0f;
     float speed = 8f;
 
-    // Update is called once per frame
+
+
+    private void Start()
+    {
+        screenShake = Camera.main.GetComponent<ScreenShake>();
+    }
     void Update()
     {
         Vector3 position = transform.position;
@@ -34,7 +41,7 @@ public class Player : MonoBehaviour
         {
             timeSinceShot = Time.time;
             laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
-
+            screenShake.TriggerShake(0.1f, 0.07f);
 
         }
     }
