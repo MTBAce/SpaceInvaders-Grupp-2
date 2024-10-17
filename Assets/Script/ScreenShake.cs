@@ -5,8 +5,8 @@ using UnityEngine;
 public class ScreenShake : MonoBehaviour
 {
 
-    float shakeMagnitude = 0.5f;
-    float shakeDuration = 0.2f;
+    float shakeMagnitude = 0;
+    float shakeDuration = 0;
     float dampingSpeed = 1.0f;
 
     private Vector3 initialPosition;
@@ -29,7 +29,6 @@ public class ScreenShake : MonoBehaviour
 
             currentShakeDuration -= Time.deltaTime * dampingSpeed;
         }
-
         else
         {
             currentShakeDuration = 0f;

@@ -534,6 +534,7 @@ MonoBehaviour:
   - {fileID: 2541556666543901838, guid: 334ac5f85445a2840b22ced992b3d346, type: 3}
   - {fileID: 2423734113569584011, guid: e8d7ee8b0fba20946acde09d292e53bf, type: 3}
   missilePrefab: {fileID: 5350362237424496023, guid: 45ec663235820cb44bd7030ec0ff2dec, type: 3}
+  gameManager: {fileID: 972938368}
 --- !u!4 &918047703
 Transform:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
 
+    public float invaderSpeed { get; private set; } = 0.84f;
 
     public int score { get; private set; } = 0;
     public int lives { get; private set; } = 3;
@@ -60,14 +61,20 @@ public class GameManager : MonoBehaviour
 
         SetScore(0);
         SetLives(3);
+
+
         NewRound();
 
     }
 
-    private void NewRound()
+    public void NewRound()
     {
         invaders.ResetInvaders();
         invaders.gameObject.SetActive(true);
+
+        float newInvaderSpeed = invaderSpeed * 1.8f;
+        invaderSpeed = newInvaderSpeed;
+        Debug.Log("Invader Speed: " + invaderSpeed);
 
         for (int i = 0; i < bunkers.Length; i++)
         {

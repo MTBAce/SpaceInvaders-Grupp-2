@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
         playerLives = GameManager.Instance.lives;
         Debug.Log("Player lives:" + playerLives);
     }
-    void Update()
+   public void Update()
     {
         
 
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
             //Debug.Log("Transform.position + laserspawnposition: " + transform.position + laserSpawnPosition);
             isLeftCannon = !isLeftCannon;
 
-            screenShake.TriggerShake(0.1f, 0.07f);
+            screenShake.TriggerShake(0.1f, 0.15f);
 
             
         }
