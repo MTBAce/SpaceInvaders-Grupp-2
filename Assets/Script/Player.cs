@@ -18,14 +18,17 @@ public class Player : MonoBehaviour
 
     public float laserCoolDown = 0.36f;
     float timeSinceShot = 0f;
-    float speed = 8f;
+    float speed = 10f;
 
+     Vector3 leftCannonOffset = new Vector3(-1f, 2.4f, 0);
+     Vector3 rightCannonOffset = new Vector3(1f, 2.4f, 0);
+
+    private bool isLeftCannon = true;
 
     private void Start()
     {
         screenShake = Camera.main.GetComponent<ScreenShake>();
         gameManager = FindObjectOfType<GameManager>();
-
 
         playerLives = GameManager.Instance.lives;
         Debug.Log("Player lives:" + playerLives);
@@ -50,20 +53,31 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Time.time >= timeSinceShot + laserCoolDown)
         {
             timeSinceShot = Time.time;
-            laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+
+            Vector3 laserSpawnPosition = isLeftCannon ?leftCannonOffset : rightCannonOffset;
+            //Debug.Log("Transform.position: " + transform.position);
+            laser = Instantiate(laserPrefab, transform.position + laserSpawnPosition, Quaternion.identity);
+            //Debug.Log("LaserSpawnPosition: " + laserSpawnPosition);
+            //Debug.Log("Transform.position + laserspawnposition: " + transform.position + laserSpawnPosition);
+            isLeftCannon = !isLeftCannon;
+
             screenShake.TriggerShake(0.1f, 0.07f);
 
+            
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Missile") || collision.gameObject.layer == LayerMask.NameToLayer("Invader"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Missile"))
         {
             playerLives -= 1;
             Debug.Log("Player lives:" + playerLives);
 
- 
+            if (playerLives == 0)
+            {
+                gameManager.OnPlayerKilled(this);
+            }
         }
            
         

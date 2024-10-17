@@ -5,9 +5,9 @@ using UnityEngine;
 public class ScreenShake : MonoBehaviour
 {
 
-    public float shakeMagnitude = 0.5f;
-    public float shakeDuration = 0.2f;
-    public float dampingSpeed = 1.0f;
+    float shakeMagnitude = 0.5f;
+    float shakeDuration = 0.2f;
+    float dampingSpeed = 1.0f;
 
     private Vector3 initialPosition;
     private float currentShakeDuration;

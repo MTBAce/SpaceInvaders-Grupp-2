@@ -8,7 +8,7 @@ using UnityEngine;
 public class Missile : Projectile
 {
 
-    public ScreenShake screenShake;
+    ScreenShake screenShake;
     private void Awake()
     {
         direction = Vector3.down;
@@ -22,9 +22,12 @@ public class Missile : Projectile
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject); //så fort den krockar med något så ska den försvinna.
-
-        screenShake.TriggerShake(0.1f, 0.15f);
+        Destroy(gameObject); 
+        if (collision.gameObject.layer != LayerMask.NameToLayer("Boundary"))
+        {
+            screenShake.TriggerShake(0.1f, 0.15f);
+        }
+        
     }
    
 }

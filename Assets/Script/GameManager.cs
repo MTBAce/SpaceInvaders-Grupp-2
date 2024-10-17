@@ -102,14 +102,16 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerKilled(Player player)
     {
-
-        player.gameObject.SetActive(false);
+        player.gameObject.SetActive(false);  
+        Debug.Log("Game Over");
+        GameOver();
 
     }
 
     public void OnInvaderKilled(Invader invader)
     {
         invader.gameObject.SetActive(false);
+        Debug.Log("Disable Invaders");
 
        
 
@@ -129,6 +131,7 @@ public class GameManager : MonoBehaviour
         if (invaders.gameObject.activeSelf)
         {
             invaders.gameObject.SetActive(false);
+            Debug.Log("Disable Invaders, boundary");
             OnPlayerKilled(player);
         }
     }
