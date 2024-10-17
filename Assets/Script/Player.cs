@@ -9,21 +9,31 @@ public class Player : MonoBehaviour
 {
     public Laser laserPrefab;
     public ScreenShake screenShake;
+    
+    private GameManager gameManager;
 
     Laser laser;
+
+    private int playerLives;
 
     public float laserCoolDown = 0.36f;
     float timeSinceShot = 0f;
     float speed = 8f;
 
 
-
     private void Start()
     {
         screenShake = Camera.main.GetComponent<ScreenShake>();
+        gameManager = FindObjectOfType<GameManager>();
+
+
+        playerLives = GameManager.Instance.lives;
+        Debug.Log("Player lives:" + playerLives);
     }
     void Update()
     {
+        
+
         Vector3 position = transform.position;
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
@@ -50,7 +60,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Missile") || collision.gameObject.layer == LayerMask.NameToLayer("Invader"))
         {
-            GameManager.Instance.OnPlayerKilled(this);
+            playerLives -= 1;
+            Debug.Log("Player lives:" + playerLives);
+
+ 
         }
+           
+        
     }
 }

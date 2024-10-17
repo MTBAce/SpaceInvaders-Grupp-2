@@ -9,7 +9,7 @@ public class Laser : Projectile
 
 {
 
-    public ScreenShake screenShake;
+    ScreenShake screenShake;
 
     private void Awake()
     {

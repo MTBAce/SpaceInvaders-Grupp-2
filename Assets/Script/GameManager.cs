@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
 
-    //Används ej just nu, men ni kan använda de senare
+
     public int score { get; private set; } = 0;
     public int lives { get; private set; } = 3;
 
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         SetScore(0);
         SetLives(3);
         NewRound();
+
     }
 
     private void NewRound()
