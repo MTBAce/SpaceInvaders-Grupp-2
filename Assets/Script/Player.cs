@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
 
     private int playerLives;
 
-    public float laserCoolDown = 0.36f;
     float laserCoolDown = 0.36f;
     float timeSinceShot = 0f;
     float speed = 10f;
@@ -56,18 +55,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && Time.time >= timeSinceShot + laserCoolDown)
         {
-            timeSinceShot = Time.time;
-
-            Vector3 laserSpawnPosition = isLeftCannon ?leftCannonOffset : rightCannonOffset;
-            //Debug.Log("Transform.position: " + transform.position);
-            laser = Instantiate(laserPrefab, transform.position + laserSpawnPosition, Quaternion.identity);
-            //Debug.Log("LaserSpawnPosition: " + laserSpawnPosition);
-            //Debug.Log("Transform.position + laserspawnposition: " + transform.position + laserSpawnPosition);
-            isLeftCannon = !isLeftCannon;
-
-            screenShake.TriggerShake(0.1f, 0.15f);
-
-            
             Shoot();
         }
     }
@@ -113,8 +100,15 @@ public class Player : MonoBehaviour
     private void Shoot()
     {
         timeSinceShot = Time.time;
-        laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
-        screenShake.TriggerShake(0.1f, 0.07f);
+
+        Vector3 laserSpawnPosition = isLeftCannon ? leftCannonOffset : rightCannonOffset;
+        //Debug.Log("Transform.position: " + transform.position);
+        laser = Instantiate(laserPrefab, transform.position + laserSpawnPosition, Quaternion.identity);
+        //Debug.Log("LaserSpawnPosition: " + laserSpawnPosition);
+        //Debug.Log("Transform.position + laserspawnposition: " + transform.position + laserSpawnPosition);
+        isLeftCannon = !isLeftCannon;
+
+        screenShake.TriggerShake(0.1f, 0.15f);
     }
 
     private void Powerup1()
