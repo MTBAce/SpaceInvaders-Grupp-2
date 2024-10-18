@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 24a167972382b5742a397b6d5cff8734
+guid: 19f2f940fdce0c44c9e22137203d616a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,16 +123,136 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Frame_0
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.6302521, y: -1.90625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 284
+      width: 119
+      height: 32
+    spriteID: 5aab3fc326195d84897843600253eeaa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 284}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.6302521, y: -1.90625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 324
+      width: 119
+      height: 32
+    spriteID: a6a603dd1f16a8e448d0fdd8de16ef76
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 324}
+  - name: Frame_2
+    originalName: 
+    pivot: {x: 0.6302521, y: -1.90625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 364
+      width: 119
+      height: 32
+    spriteID: ad33e9d096f535945b3a31fc974c931a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 364}
+  - name: Frame_3
+    originalName: 
+    pivot: {x: 0.6302521, y: -1.90625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 404
+      width: 119
+      height: 32
+    spriteID: ecbc10cfe184a3f45aa7a3cf6fbee1ad
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 404}
+  - name: Frame_4
+    originalName: 
+    pivot: {x: 0.6302521, y: -1.90625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 444
+      width: 119
+      height: 32
+    spriteID: dd1b1e0407c45a146a5806c1938f63f5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 444}
+  - name: Frame_5
+    originalName: 
+    pivot: {x: 0.6302521, y: -1.90625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 4
+      width: 119
+      height: 32
+    spriteID: 51156d541fd69474788255e1b3d17e72
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 4}
+  - name: Frame_6
+    originalName: 
+    pivot: {x: 0.625, y: -1.90625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 150
-      height: 150
-    spriteID: fde1ed314fce6ec49838c7e7abef3589
+      width: 120
+      height: 32
+    spriteID: af71b8635c578e545bff53c30b8133b3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,138 +261,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_1
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 162
-      width: 150
-      height: 150
-    spriteID: 834022e3b5239764b8ecc44b02afc5cc
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 162}
-  - name: Frame_2
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 320
-      width: 150
-      height: 150
-    spriteID: 00d4dc4bc1c0a1040b47709cf7d9852d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 320}
-  - name: Frame_3
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 478
-      width: 150
-      height: 150
-    spriteID: 00c5cf814fe753a49afcc970e795c31e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 478}
-  - name: Frame_4
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 636
-      width: 150
-      height: 150
-    spriteID: 44c020c7af8bfff4598f7584dda7d11b
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 636}
-  - name: Frame_5
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 794
-      width: 150
-      height: 150
-    spriteID: bfc757ef458334647a159adfd2ab2e9d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 794}
-  - name: Frame_6
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 162
-      y: 4
-      width: 150
-      height: 150
-    spriteID: 5eac974e7cee61142a52db41ea97848f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 162, y: 4}
   - name: Frame_7
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.625, y: -1.90625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 162
-      y: 162
-      width: 150
-      height: 150
-    spriteID: d5d9d0af77da7b04b9286b341000e10e
+      x: 4
+      y: 44
+      width: 120
+      height: 32
+    spriteID: 4cbc22b3bef748542b22b13d97f7f1c8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -280,19 +280,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 162, y: 162}
+    uvTransform: {x: 4, y: 44}
   - name: Frame_8
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.625, y: -1.90625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 162
-      y: 320
-      width: 150
-      height: 150
-    spriteID: b3cefa153f1bac34cb05108cb96d1eee
+      x: 4
+      y: 84
+      width: 120
+      height: 32
+    spriteID: ec4cb64b511697a4389790eac5d1191b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -300,19 +300,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 162, y: 320}
+    uvTransform: {x: 4, y: 84}
   - name: Frame_9
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.625, y: -1.90625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 162
-      y: 478
-      width: 150
-      height: 150
-    spriteID: 7628f27972bb58845a3db2487c44c4ca
+      x: 4
+      y: 124
+      width: 120
+      height: 32
+    spriteID: 261d42bc49c603b49bfcd77cb9ccc826
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -320,19 +320,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 162, y: 478}
+    uvTransform: {x: 4, y: 124}
   - name: Frame_10
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.625, y: -1.90625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 162
-      y: 636
-      width: 150
-      height: 150
-    spriteID: 2980151fdf0a4f144af3462f1e60d08d
+      x: 4
+      y: 164
+      width: 120
+      height: 32
+    spriteID: 65805457137fad54888fcd6d3df56982
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -340,19 +340,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 162, y: 636}
+    uvTransform: {x: 4, y: 164}
   - name: Frame_11
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.625, y: -1.90625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 162
-      y: 794
-      width: 150
-      height: 150
-    spriteID: 41ed1d641afa835409236c4f56e224b8
+      x: 4
+      y: 204
+      width: 120
+      height: 32
+    spriteID: 1e9d723f4144a874292ce63c686526c7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -360,19 +360,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 162, y: 794}
+    uvTransform: {x: 4, y: 204}
   - name: Frame_12
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.625, y: -1.90625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 320
-      y: 4
-      width: 150
-      height: 150
-    spriteID: 6fac61e2fe8fcc64a9ff0069433378e1
+      x: 4
+      y: 244
+      width: 120
+      height: 32
+    spriteID: a39473d68a7f15149a678a44857f5b35
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -380,19 +380,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 320, y: 4}
+    uvTransform: {x: 4, y: 244}
   - name: Frame_13
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.6302521, y: -1.90625}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 320
-      y: 162
-      width: 150
-      height: 150
-    spriteID: d66e2d0f7be73bb47835cd5103dfce0c
+      x: 132
+      y: 44
+      width: 119
+      height: 32
+    spriteID: 00b625544a1929e4ba9175a7022c4c08
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -400,32 +400,12 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 320, y: 162}
-  - name: Frame_14
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 320
-      y: 320
-      width: 150
-      height: 150
-    spriteID: 6ee559fc9308e5b42b07362b7508f310
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 320, y: 320}
+    uvTransform: {x: 132, y: 44}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1171151871
-    name: Main_Menu
+    guid: -1688875648
+    name: QuitButtonAnimated
     layerFlags: 0
     layerType: 0
     blendMode: 0
@@ -435,136 +415,127 @@ ScriptedImporter:
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: fde1ed314fce6ec49838c7e7abef3589
+        y: 61
+        width: 119
+        height: 32
+      spriteId: 5aab3fc326195d84897843600253eeaa
     - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: 834022e3b5239764b8ecc44b02afc5cc
+        y: 61
+        width: 119
+        height: 32
+      spriteId: a6a603dd1f16a8e448d0fdd8de16ef76
     - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: 00d4dc4bc1c0a1040b47709cf7d9852d
+        y: 61
+        width: 119
+        height: 32
+      spriteId: ad33e9d096f535945b3a31fc974c931a
     - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: 00c5cf814fe753a49afcc970e795c31e
+        y: 61
+        width: 119
+        height: 32
+      spriteId: ecbc10cfe184a3f45aa7a3cf6fbee1ad
     - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: 44c020c7af8bfff4598f7584dda7d11b
+        y: 61
+        width: 119
+        height: 32
+      spriteId: dd1b1e0407c45a146a5806c1938f63f5
     - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: bfc757ef458334647a159adfd2ab2e9d
+        y: 61
+        width: 119
+        height: 32
+      spriteId: 51156d541fd69474788255e1b3d17e72
     - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: 5eac974e7cee61142a52db41ea97848f
+        y: 61
+        width: 120
+        height: 32
+      spriteId: af71b8635c578e545bff53c30b8133b3
     - name: Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: d5d9d0af77da7b04b9286b341000e10e
+        y: 61
+        width: 120
+        height: 32
+      spriteId: 4cbc22b3bef748542b22b13d97f7f1c8
     - name: Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: b3cefa153f1bac34cb05108cb96d1eee
+        y: 61
+        width: 120
+        height: 32
+      spriteId: ec4cb64b511697a4389790eac5d1191b
     - name: Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: 7628f27972bb58845a3db2487c44c4ca
+        y: 61
+        width: 120
+        height: 32
+      spriteId: 261d42bc49c603b49bfcd77cb9ccc826
     - name: Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: 2980151fdf0a4f144af3462f1e60d08d
+        y: 61
+        width: 120
+        height: 32
+      spriteId: 65805457137fad54888fcd6d3df56982
     - name: Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: 41ed1d641afa835409236c4f56e224b8
+        y: 61
+        width: 120
+        height: 32
+      spriteId: 1e9d723f4144a874292ce63c686526c7
     - name: Frame_12
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: 6fac61e2fe8fcc64a9ff0069433378e1
+        y: 61
+        width: 120
+        height: 32
+      spriteId: a39473d68a7f15149a678a44857f5b35
     - name: Frame_13
       frameIndex: 13
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: d66e2d0f7be73bb47835cd5103dfce0c
-    - name: Frame_14
-      frameIndex: 14
-      additiveSortOrder: 0
-      cellRect:
-        x: 0
-        y: 0
-        width: 150
-        height: 150
-      spriteId: 6ee559fc9308e5b42b07362b7508f310
+        y: 61
+        width: 119
+        height: 32
+      spriteId: 00b625544a1929e4ba9175a7022c4c08
     linkedCells: []
     parentIndex: -1
   platformSettings:
