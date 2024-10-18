@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Disable Invaders");
 
         kills += 1;
-        if (kills >= 1)
+        if (kills >= 10)
         {
             kills = 0;
             int rand = Random.Range(1, 4);

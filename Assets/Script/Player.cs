@@ -15,11 +15,11 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
 
     Laser laser;
-    
 
+    bool Powerup2Toggle;
     private int playerLives;
 
-    float laserCoolDown = 0.36f;
+    float laserCoolDown = 0.5f;
     float timeSinceShot = 0f;
     float speed = 10f;
 
@@ -56,6 +56,12 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Time.time >= timeSinceShot + laserCoolDown)
         {
             Shoot();
+            Debug.Log(Powerup2Toggle);
+
+            if (Powerup2Toggle == true)
+            {
+                StartCoroutine(DubbleShotCoroutine(0.1f));
+            }
         }
     }
 
@@ -76,17 +82,11 @@ public class Player : MonoBehaviour
         {
             if (collision.gameObject.name == "Powerup1")
             {
-                float cooldown = laserCoolDown;
-                laserCoolDown *= 0.5f;
-                //Debug.Log(laserCoolDown);
-                StartCoroutine(ShootCoroutine(3, cooldown));
+                playerLives += 1;
             } 
             else if (collision.gameObject.name == "Powerup2")
             {
-                float cooldown = laserCoolDown;
-                laserCoolDown *= 0.5f;
-                //Debug.Log(laserCoolDown);
-                StartCoroutine(ShootCoroutine(3, cooldown));
+                StartCoroutine(LasersCoroutine(5));
             }
             else
             {
@@ -129,5 +129,16 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         laserCoolDown = cooldown;
+    }
+    IEnumerator LasersCoroutine(float seconds)
+    {
+        Powerup2Toggle = true;
+        yield return new WaitForSeconds(seconds);
+        Powerup2Toggle = false;
+    }
+    IEnumerator DubbleShotCoroutine(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Shoot();
     }
 }
