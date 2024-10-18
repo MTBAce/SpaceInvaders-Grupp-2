@@ -117,7 +117,7 @@ public class Invaders : MonoBehaviour
         invaderSpeed = GameManager.Instance.invaderSpeed;
 
         float speed = invaderSpeed;
-        Debug.Log("Actual speed:" + invaderSpeed);
+        //Debug.Log("Actual speed:" + invaderSpeed);
         transform.position += speed * Time.deltaTime * direction;
 
         Vector3 leftEdge = Camera.main.ViewportToWorldPoint(Vector3.zero);

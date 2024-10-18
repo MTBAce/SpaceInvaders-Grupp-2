@@ -78,20 +78,21 @@ public class Player : MonoBehaviour
             {
                 float cooldown = laserCoolDown;
                 laserCoolDown *= 0.5f;
+                //Debug.Log(laserCoolDown);
                 StartCoroutine(ShootCoroutine(3, cooldown));
             } 
             else if (collision.gameObject.name == "Powerup2")
             {
                 float cooldown = laserCoolDown;
                 laserCoolDown *= 0.5f;
-                Debug.Log(laserCoolDown);
+                //Debug.Log(laserCoolDown);
                 StartCoroutine(ShootCoroutine(3, cooldown));
             }
             else
             {
                 float cooldown = laserCoolDown;
                 laserCoolDown *= 0.5f;
-                Debug.Log(laserCoolDown);
+                //Debug.Log(laserCoolDown);
                 StartCoroutine(ShootCoroutine(3, cooldown));
             }
         }
