@@ -9,7 +9,7 @@ public class Invaders : MonoBehaviour
     public Invader[] prefab = new Invader[4];
 
     private int row = 4;
-    private int col = 7;
+    private int col = 11;
     private float invaderSpeed;
 
 
@@ -44,14 +44,14 @@ public class Invaders : MonoBehaviour
 
             //för att centerar invaders
             Vector2 centerOffset = new Vector2(-width * 0.5f, -height * 0.5f);
-            Vector3 rowPosition = new Vector3(centerOffset.x, (2.8f * r) + centerOffset.y, 0f);
+            Vector3 rowPosition = new Vector3(centerOffset.x, (2.3f * r) + centerOffset.y, 0f);
             
             for (int c = 0; c < col; c++)
             {
                 Invader tempInvader = Instantiate(prefab[r], transform);
 
                 Vector3 position = rowPosition;
-                position.x += 4f * c;
+                position.x += 2f * c;
                 tempInvader.transform.localPosition = position;
 
 

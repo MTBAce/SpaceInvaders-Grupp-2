@@ -8,7 +8,7 @@ using UnityEngine;
 public class Laser : Projectile
 
 {
-    float laserSpeed = 18f;
+    float laserSpeed = 22f;
     ScreenShake screenShake;
 
     private void Awake()
