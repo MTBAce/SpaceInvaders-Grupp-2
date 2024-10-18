@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
         //Debug.Log("Transform.position + laserspawnposition: " + transform.position + laserSpawnPosition);
         isLeftCannon = !isLeftCannon;
 
-        screenShake.TriggerShake(0.1f, 0.15f);
+        screenShake.TriggerShake(0.12f, 0.35f);
     }
 
     private void Powerup1()

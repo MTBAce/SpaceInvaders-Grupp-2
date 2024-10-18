@@ -39,8 +39,8 @@ public class ScreenShake : MonoBehaviour
 
     public void TriggerShake(float duration, float magnitude)
     {
-        duration = shakeDuration;
-        magnitude = shakeMagnitude;
-        currentShakeDuration = shakeDuration;
+        shakeDuration = duration;    // Assign the duration parameter to shakeDuration
+        shakeMagnitude = magnitude;  // Assign the magnitude parameter to shakeMagnitude
+        currentShakeDuration = shakeDuration;  // Initialize the currentShakeDuration to start shaking
     }
 }

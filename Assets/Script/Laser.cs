@@ -34,9 +34,11 @@ public class Laser : Projectile
 
     public void CheckCollision(Collider2D collision)
     {
-       Bunker bunker = collision.gameObject.GetComponent<Bunker>();
+
+
        screenShake.TriggerShake(0.2f, 0.15f);
-        if (bunker == null) 
+
+        if (!collision.gameObject.CompareTag("Powerup"))
         {
             Destroy(gameObject);
         }

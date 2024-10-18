@@ -25,7 +25,7 @@ public class Missile : Projectile
         Destroy(gameObject); 
         if (collision.gameObject.layer != LayerMask.NameToLayer("Boundary"))
         {
-            screenShake.TriggerShake(0.1f, 0.15f);
+            screenShake.TriggerShake(0.15f, 0.17f);
         }
         
     }

@@ -17,6 +17,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1840194304519350902, guid: 8ddacb4e6f168af47939b65b0c542fca, type: 3}
+      propertyPath: animationTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1840194304519350902, guid: 8ddacb4e6f168af47939b65b0c542fca, type: 3}
       propertyPath: animationSprites.Array.data[0]
       value: 
       objectReference: {fileID: -22658187, guid: c1437824c3f44fa42afa871f3c258939, type: 3}
@@ -47,6 +51,18 @@ PrefabInstance:
     - target: {fileID: 4005408055682625691, guid: 8ddacb4e6f168af47939b65b0c542fca, type: 3}
       propertyPath: m_Offset.y
       value: 0.00065042824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8483304136490656786, guid: 8ddacb4e6f168af47939b65b0c542fca, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8483304136490656786, guid: 8ddacb4e6f168af47939b65b0c542fca, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8483304136490656786, guid: 8ddacb4e6f168af47939b65b0c542fca, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8483304136490656786, guid: 8ddacb4e6f168af47939b65b0c542fca, type: 3}
       propertyPath: m_LocalPosition.x

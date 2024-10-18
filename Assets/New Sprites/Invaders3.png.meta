@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e059f81df352568439ee5d7f739cca05
+guid: fcfd52dfa49435c46862da62d3a3dd4b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -100,10 +100,10 @@ TextureImporter:
       name: Invaders3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 30
-        height: 30
+        x: 3
+        y: 6
+        width: 22
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b8323b97f5920541b86ea59e3101bed
-      internalID: -508087716
+      spriteID: 07df3d82a651283439e401c41ef50f39
+      internalID: -320176916
       vertices: []
       indices: 
       edges: []
@@ -121,10 +121,10 @@ TextureImporter:
       name: Invaders3_10
       rect:
         serializedVersion: 2
-        x: 300
-        y: 0
-        width: 30
-        height: 30
+        x: 303
+        y: 5
+        width: 22
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3af89f0e4fb80a7408796e79542d782e
-      internalID: 1725901934
+      spriteID: 8f8eb364aa16c404695477d572f34adf
+      internalID: 1177753931
       vertices: []
       indices: 
       edges: []
@@ -149,17 +149,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Invaders3_0: -508087716
-      Invaders3_1: 1825094046
-      Invaders3_10: 1725901934
-      Invaders3_2: -2145694950
-      Invaders3_3: -2056865754
-      Invaders3_4: 2088139540
-      Invaders3_5: 1283222557
-      Invaders3_6: -1557075126
-      Invaders3_7: -1056013187
-      Invaders3_8: 1098780755
-      Invaders3_9: 873445127
+      Invaders3_0: -320176916
+      Invaders3_1: 826009384
+      Invaders3_10: 1177753931
+      Invaders3_2: 1403367283
+      Invaders3_3: -2141424974
+      Invaders3_4: -1938089955
+      Invaders3_5: -674804110
+      Invaders3_6: 725224359
+      Invaders3_7: 1069481180
+      Invaders3_8: -1957058586
+      Invaders3_9: 460722241
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

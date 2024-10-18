@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
     public void OnInvaderKilled(Invader invader)
     {
         invader.gameObject.SetActive(false);
-        Debug.Log("Disable Invaders");
+        //Debug.Log("Disable Invaders");
 
         kills += 1;
         if (kills >= 10)
@@ -133,17 +133,17 @@ public class GameManager : MonoBehaviour
             if (rand == 1)
             {
                 Instantiate(Powerup1, invader.gameObject.transform.position, Quaternion.identity);
-                Debug.Log(rand);
+                //Debug.Log(rand);
             }
             if (rand == 2)
             {
                 Instantiate(Powerup2, invader.gameObject.transform.position, Quaternion.identity);
-                Debug.Log(rand);
+                //Debug.Log(rand);
             }
             if (rand == 3)
             {
                 Instantiate(Powerup3, invader.gameObject.transform.position, Quaternion.identity);
-                Debug.Log(rand);
+                //Debug.Log(rand);
             }
         }
 
