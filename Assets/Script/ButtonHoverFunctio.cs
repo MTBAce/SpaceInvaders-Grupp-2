@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ButtonHoverFunctio : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     private Renderer objectRenderer;
+
     void Start()
     {
         objectRenderer = GetComponent<Renderer>();
@@ -13,10 +14,11 @@ public class ButtonHoverFunctio : MonoBehaviour
         objectRenderer.enabled = false;
     }
         
-    // Update is called once per frame
     void OnMouseEnter()
     {
         objectRenderer.enabled = true;
+
+
     }
     private void OnMouseExit()
     {

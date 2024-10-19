@@ -171,4 +171,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139c170c2d4ce9e4f8c00f67d9ce5b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpClip: {fileID: 8300000, guid: 2a991107d002d08419e2a05b85af95fc, type: 3}
   powerUpEffect: {fileID: 11400000, guid: 10dd69db833568e4ba4d7729d7b25d34, type: 2}

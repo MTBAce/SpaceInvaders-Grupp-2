@@ -9,6 +9,10 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private AudioClip laserShootClip;
+    [SerializeField] private AudioClip hurtEffectClip;
+    
+    
     public Laser laserPrefab;
     public ScreenShake screenShake;
     
@@ -21,7 +25,7 @@ public class Player : MonoBehaviour
     bool Powerup2Toggle;
     private int playerLives;
 
-    float laserCoolDown = 0.8f;
+    float laserCoolDown = 0.3f;
     float timeSinceShot = 0f;
     float speed = 10f;
 
@@ -56,7 +60,7 @@ public class Player : MonoBehaviour
 
         transform.position = position;
 
-        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetKeyDown(KeyCode.Mouse0)) && Time.time >= timeSinceShot + laserCoolDown)
+        if (Input.GetKeyDown(KeyCode.Space) /*|| (Input.GetKeyDown(KeyCode.Mouse0))*/ && Time.time >= timeSinceShot + laserCoolDown)
         {
             Shoot();
 
@@ -74,6 +78,8 @@ public class Player : MonoBehaviour
             playerLives -= 1;
             Debug.Log("Player lives:" + playerLives);
 
+            SoundManager.instance.PlaySoundFXClip(hurtEffectClip, transform, 1f);
+
             if (playerLives == 0)
             {
                 gameManager.OnPlayerKilled(this);
@@ -90,12 +96,17 @@ public class Player : MonoBehaviour
         laser = Instantiate(laserPrefab, transform.position + laserSpawnPosition, Quaternion.identity);
 
         isLeftCannon = !isLeftCannon;
-
+        SoundManager.instance.PlaySoundFXClip(laserShootClip, transform, 0.5f);
+    
         screenShake.TriggerShake(0.12f, 0.35f);
+
+        Debug.Log("Laser Cooldown before Power-up: " + laserCoolDown);
     }
 
     public void AddLife(int amount)
     {
+
+
         playerLives += amount;
         Debug.Log("Added life. Current lives: " + playerLives);
     }
@@ -104,13 +115,15 @@ public class Player : MonoBehaviour
     {
         float startLaserCoolDown = laserCoolDown;
 
-        laserCoolDown *= .1f;
+        laserCoolDown *= .4f;
+        Debug.Log("Cooldown during power-up:" + laserCoolDown);
         StartCoroutine(ShootCoroutine(duration, startLaserCoolDown));
     }
 
     public void StartDoubleLaser (float duration)
     {
         StartCoroutine(LaserCoroutine(duration));
+        
     }
 
 
@@ -118,6 +131,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         laserCoolDown = startLaserCoolDown;
+        Debug.Log("Cooldown after Power-up:" + laserCoolDown);
     }
 
     private IEnumerator LaserCoroutine(float duration)
