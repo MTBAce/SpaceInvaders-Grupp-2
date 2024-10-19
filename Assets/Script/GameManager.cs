@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
             bunkers[i].ResetBunker();
         }
 
-        Respawn();
+
     }
 
     private void Respawn()

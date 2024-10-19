@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonHoverFunctio : MonoBehaviour
 {
+    [SerializeField] private AudioClip selectEffectClip;
 
     private Renderer objectRenderer;
 
@@ -17,7 +18,7 @@ public class ButtonHoverFunctio : MonoBehaviour
     void OnMouseEnter()
     {
         objectRenderer.enabled = true;
-
+        SoundManager.instance.PlaySoundFXClip(selectEffectClip, transform, 1);
 
     }
     private void OnMouseExit()
