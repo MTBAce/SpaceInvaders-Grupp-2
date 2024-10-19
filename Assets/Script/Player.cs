@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
             playerLives -= 1;
             Debug.Log("Player lives:" + playerLives);
 
+            screenShake.TriggerShake(0.25f, 1.3f);
             SoundManager.instance.PlaySoundFXClip(hurtEffectClip, transform, 1f);
 
             if (playerLives == 0)
