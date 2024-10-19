@@ -16,10 +16,12 @@ public class Player : MonoBehaviour
 
     Laser laser;
 
+
+    public int rand;
     bool Powerup2Toggle;
     private int playerLives;
 
-    float laserCoolDown = 0.5f;
+    float laserCoolDown = 0.8f;
     float timeSinceShot = 0f;
     float speed = 10f;
 
@@ -38,7 +40,8 @@ public class Player : MonoBehaviour
     }
    public void Update()
     {
-        
+        rand = gameManager.rand;
+
 
         Vector3 position = transform.position;
 
@@ -53,14 +56,13 @@ public class Player : MonoBehaviour
 
         transform.position = position;
 
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time >= timeSinceShot + laserCoolDown)
+        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetKeyDown(KeyCode.Mouse0)) && Time.time >= timeSinceShot + laserCoolDown)
         {
             Shoot();
-            Debug.Log(Powerup2Toggle);
 
             if (Powerup2Toggle == true)
             {
-                StartCoroutine(DubbleShotCoroutine(0.1f));
+                StartCoroutine(DoubleLaserCoroutine(0));
             }
         }
     }
@@ -78,24 +80,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.CompareTag("Powerup"))
-        {
-            if (collision.gameObject.name == "Powerup1")
-            {
-                playerLives += 1;
-            } 
-            else if (collision.gameObject.name == "Powerup2")
-            {
-                StartCoroutine(LasersCoroutine(5));
-            }
-            else
-            {
-                float cooldown = laserCoolDown;
-                laserCoolDown *= 0.5f;
-                //Debug.Log(laserCoolDown);
-                StartCoroutine(ShootCoroutine(3, cooldown));
-            }
-        }
     }
 
     private void Shoot()
@@ -103,42 +87,50 @@ public class Player : MonoBehaviour
         timeSinceShot = Time.time;
 
         Vector3 laserSpawnPosition = isLeftCannon ? leftCannonOffset : rightCannonOffset;
-        //Debug.Log("Transform.position: " + transform.position);
         laser = Instantiate(laserPrefab, transform.position + laserSpawnPosition, Quaternion.identity);
-        //Debug.Log("LaserSpawnPosition: " + laserSpawnPosition);
-        //Debug.Log("Transform.position + laserspawnposition: " + transform.position + laserSpawnPosition);
+
         isLeftCannon = !isLeftCannon;
 
         screenShake.TriggerShake(0.12f, 0.35f);
     }
 
-    private void Powerup1()
+    public void AddLife(int amount)
     {
-
-    }
-    private void Powerup2()
-    {
-
-    }
-    private void Powerup3()
-    {
-
+        playerLives += amount;
+        Debug.Log("Added life. Current lives: " + playerLives);
     }
 
-    IEnumerator ShootCoroutine(float seconds,float cooldown)
+    public void FastShooting(float duration)
     {
-        yield return new WaitForSeconds(seconds);
-        laserCoolDown = cooldown;
+        float startLaserCoolDown = laserCoolDown;
+
+        laserCoolDown *= .1f;
+        StartCoroutine(ShootCoroutine(duration, startLaserCoolDown));
     }
-    IEnumerator LasersCoroutine(float seconds)
+
+    public void StartDoubleLaser (float duration)
+    {
+        StartCoroutine(LaserCoroutine(duration));
+    }
+
+
+    private IEnumerator ShootCoroutine(float duration, float startLaserCoolDown)
+    {
+        yield return new WaitForSeconds(duration);
+        laserCoolDown = startLaserCoolDown;
+    }
+
+    private IEnumerator LaserCoroutine(float duration)
     {
         Powerup2Toggle = true;
-        yield return new WaitForSeconds(seconds);
+        yield return new WaitForSeconds(duration);
         Powerup2Toggle = false;
     }
-    IEnumerator DubbleShotCoroutine(float seconds)
+
+    IEnumerator DoubleLaserCoroutine(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         Shoot();
     }
+
 }

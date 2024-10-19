@@ -12,6 +12,7 @@ public class Invaders : MonoBehaviour
     private int col = 11;
     private float invaderSpeed;
 
+    bool gameOver;
 
     private Vector3 initialPosition;
     private Vector3 direction = Vector3.right;
@@ -31,6 +32,7 @@ public class Invaders : MonoBehaviour
         InvokeRepeating(nameof(MissileAttack), 1, 1); //Hur ofta ska den skjuta iväg missiler
         gameManager = FindObjectOfType<GameManager>();
 
+        
         
     }
 
@@ -76,26 +78,30 @@ public class Invaders : MonoBehaviour
     {
         int nrOfInvaders = GetInvaderCount();
 
-        if(nrOfInvaders == 0)
+        if (nrOfInvaders == 0)
         {
             return;
         }
 
-        foreach(Transform invader in transform)
+        
+        if(gameOver == false) 
+        
         {
-
-            if (!invader.gameObject.activeInHierarchy) //om en invader är död ska den inte kunna skjuta...
-                continue;
-            
-           
-            float rand = UnityEngine.Random.value;
-            if (rand < 0.2)
+            foreach (Transform invader in transform)
             {
-                Instantiate(missilePrefab, invader.position + new Vector3(0,-2f,0), Quaternion.identity);
-                break;
+
+                if (!invader.gameObject.activeInHierarchy) //om en invader är död ska den inte kunna skjuta...
+                    continue;
+
+
+                float rand = UnityEngine.Random.value;
+                if (rand < 0.2)
+                {
+                    Instantiate(missilePrefab, invader.position + new Vector3(0, -2f, 0), Quaternion.identity);
+                    break;
+                }
             }
-        }
-       
+        }   
     }
 
     //Kollar hur många invaders som lever
@@ -114,7 +120,8 @@ public class Invaders : MonoBehaviour
     //Flyttar invaders åt sidan
     void Update()
     {
-        invaderSpeed = GameManager.Instance.invaderSpeed;
+        invaderSpeed = gameManager.invaderSpeed;
+        gameOver = gameManager.gameOver;
 
         float speed = invaderSpeed;
         //Debug.Log("Actual speed:" + invaderSpeed);
@@ -145,7 +152,12 @@ public class Invaders : MonoBehaviour
     {
         direction = new Vector3(-direction.x, 0, 0);
         Vector3 position = transform.position;
-        position.y -= 1f;
-        transform.position = position;
+        
+        if (gameOver == false)
+        {
+            position.y -= 1f;
+            transform.position = position;
+        }
+    
     }
 }

@@ -12,13 +12,18 @@ public class GameManager : MonoBehaviour
     private Invaders invaders;
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
-    public GameObject Powerup1;
-    public GameObject Powerup2;
-    public GameObject Powerup3;
 
+
+    private PowerUpManager powerupManager; 
+
+    public GameObject GameOverText;
+
+    public bool gameOver = false;
+
+    public int rand;
 
     private float kills = 0;
-    public float invaderSpeed { get; private set; } = 0.84f;
+    public float invaderSpeed { get; private set; } = 0.8f;
 
     public int score { get; private set; } = 0;
     public int lives { get; private set; } = 3;
@@ -50,6 +55,9 @@ public class GameManager : MonoBehaviour
         mysteryShip = FindObjectOfType<MysteryShip>();
         bunkers = FindObjectsOfType<Bunker>();
 
+        powerupManager = FindObjectOfType<PowerUpManager>();
+     
+
         NewGame();
     }
 
@@ -63,7 +71,7 @@ public class GameManager : MonoBehaviour
 
     private void NewGame()
     {
-
+        GameOverText.SetActive(false);
         SetScore(0);
         SetLives(3);
 
@@ -77,7 +85,7 @@ public class GameManager : MonoBehaviour
         invaders.ResetInvaders();
         invaders.gameObject.SetActive(true);
 
-        float newInvaderSpeed = invaderSpeed * 1.8f;
+        float newInvaderSpeed = invaderSpeed * 1.3f;
         invaderSpeed = newInvaderSpeed;
         Debug.Log("Invader Speed: " + invaderSpeed);
 
@@ -99,7 +107,10 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
-        invaders.gameObject.SetActive(false);
+        //invaders.gameObject.SetActive(false);
+        mysteryShip.gameObject.SetActive(false);
+        GameOverText.SetActive(true);
+        gameOver = true;
     }
 
     private void SetScore(int score)
@@ -123,30 +134,14 @@ public class GameManager : MonoBehaviour
     public void OnInvaderKilled(Invader invader)
     {
         invader.gameObject.SetActive(false);
-        //Debug.Log("Disable Invaders");
 
         kills += 1;
         if (kills >= 10)
         {
-            kills = 0;
-            int rand = Random.Range(1, 4);
-            if (rand == 1)
-            {
-                Instantiate(Powerup1, invader.gameObject.transform.position, Quaternion.identity);
-                //Debug.Log(rand);
-            }
-            if (rand == 2)
-            {
-                Instantiate(Powerup2, invader.gameObject.transform.position, Quaternion.identity);
-                //Debug.Log(rand);
-            }
-            if (rand == 3)
-            {
-                Instantiate(Powerup3, invader.gameObject.transform.position, Quaternion.identity);
-                //Debug.Log(rand);
-            }
+           kills = 0;
+           powerupManager.SpawnPowerup(invader.gameObject.transform.position);
         }
-
+            
         if (invaders.GetInvaderCount() == 0)
         {
             NewRound();

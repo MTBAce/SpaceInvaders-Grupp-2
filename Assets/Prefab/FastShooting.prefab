@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 4469320209382118595}
   - component: {fileID: -6512881642108099842}
   - component: {fileID: 2983422815823890271}
+  - component: {fileID: -4789346968479939684}
   m_Layer: 0
-  m_Name: Powerup3
+  m_Name: FastShooting
   m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,3 +159,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-4789346968479939684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2638285679698177339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139c170c2d4ce9e4f8c00f67d9ce5b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpEffect: {fileID: 11400000, guid: ba043a205a85fee4993d80d683a61397, type: 2}
