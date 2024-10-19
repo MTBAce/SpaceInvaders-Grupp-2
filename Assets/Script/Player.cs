@@ -11,11 +11,18 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private AudioClip laserShootClip;
     [SerializeField] private AudioClip hurtEffectClip;
-    
-    
+
+    public Animator leftFlash;
+    public Animator rightFlash;
+
+
     public Laser laserPrefab;
     public ScreenShake screenShake;
-    
+
+    GameObject rightLaserMuzzle;
+    GameObject leftLaserMuzzle;
+
+
     private GameManager gameManager;
 
     Laser laser;
@@ -96,6 +103,15 @@ public class Player : MonoBehaviour
         Vector3 laserSpawnPosition = isLeftCannon ? leftCannonOffset : rightCannonOffset;
         laser = Instantiate(laserPrefab, transform.position + laserSpawnPosition, Quaternion.identity);
 
+        if(isLeftCannon == true) 
+        {
+            leftFlash.SetTrigger("leftFlash");
+        }   
+        else
+        {
+            rightFlash.SetTrigger("rightFlash");
+        }
+        
         isLeftCannon = !isLeftCannon;
         SoundManager.instance.PlaySoundFXClip(laserShootClip, transform, 0.5f);
     

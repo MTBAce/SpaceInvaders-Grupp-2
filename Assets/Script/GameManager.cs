@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         invaders.ResetInvaders();
         invaders.gameObject.SetActive(true);
 
-        float newInvaderSpeed = invaderSpeed * 1.3f;
+        float newInvaderSpeed = invaderSpeed * 1.7f;
         invaderSpeed = newInvaderSpeed;
         Debug.Log("Invader Speed: " + invaderSpeed);
 
