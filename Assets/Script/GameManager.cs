@@ -2,10 +2,14 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Timeline.Actions;
+using TMPro;
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
 {
+
+    public TextMeshProUGUI scoreText;
+
     public static GameManager Instance { get; private set; }
 
     private Player player;
@@ -13,19 +17,16 @@ public class GameManager : MonoBehaviour
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
 
-
     private PowerUpManager powerupManager; 
 
     public GameObject GameOverText;
-
     public bool gameOver = false;
-
     public int rand;
 
     private float kills = 0;
     public float invaderSpeed { get; private set; } = 0.8f;
 
-    public int score { get; private set; } = 0;
+    public int score { get; private set; } = 0000000;
     public int lives { get; private set; } = 3;
 
     private void Awake()
@@ -113,14 +114,15 @@ public class GameManager : MonoBehaviour
         gameOver = true;
     }
 
-    private void SetScore(int score)
+    private void SetScore(int newScore)
     {
-        
+      score = newScore;
+      scoreText.text = score.ToString("D6");
     }
 
     private void SetLives(int lives)
     {
-       
+
     }
 
     public void OnPlayerKilled(Player player)
@@ -141,6 +143,8 @@ public class GameManager : MonoBehaviour
            kills = 0;
            powerupManager.SpawnPowerup(invader.gameObject.transform.position);
         }
+
+        SetScore(score + 100);
             
         if (invaders.GetInvaderCount() == 0)
         {
@@ -151,6 +155,7 @@ public class GameManager : MonoBehaviour
     public void OnMysteryShipKilled(MysteryShip mysteryShip)
     {
         mysteryShip.gameObject.SetActive(false);
+        SetScore(score + 500);
     }
 
     public void OnBoundaryReached()

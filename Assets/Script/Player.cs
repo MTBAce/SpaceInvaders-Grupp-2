@@ -117,13 +117,11 @@ public class Player : MonoBehaviour
     
         screenShake.TriggerShake(0.12f, 0.35f);
 
-        Debug.Log("Laser Cooldown before Power-up: " + laserCoolDown);
+        //Debug.Log("Laser Cooldown before Power-up: " + laserCoolDown);
     }
 
     public void AddLife(int amount)
     {
-
-
         playerLives += amount;
         Debug.Log("Added life. Current lives: " + playerLives);
     }
@@ -148,7 +146,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         laserCoolDown = startLaserCoolDown;
-        Debug.Log("Cooldown after Power-up:" + laserCoolDown);
+        //Debug.Log("Cooldown after Power-up:" + laserCoolDown);
     }
 
     private IEnumerator LaserCoroutine(float duration)
