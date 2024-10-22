@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject GameOverText;
     public bool gameOver = false;
     public int rand;
+    public GameObject invaderDeathAnim;
 
     private float kills = 0;
     public float invaderSpeed { get; private set; } = 0.8f;
@@ -136,6 +137,12 @@ public class GameManager : MonoBehaviour
     public void OnInvaderKilled(Invader invader)
     {
         invader.gameObject.SetActive(false);
+        
+   
+        GameObject spawnedDeathAnim = Instantiate(invaderDeathAnim, invader.gameObject.transform.position, Quaternion.identity);
+       
+        Animator invaderAnimator = spawnedDeathAnim.GetComponent<Animator>();
+        invaderAnimator.SetTrigger("InvaderDeath");
 
         kills += 1;
         if (kills >= 10)
