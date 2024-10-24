@@ -9,9 +9,11 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private AudioClip laserShootClip;
+    public AudioClip[] laserShootClip;
     [SerializeField] private AudioClip hurtEffectClip;
 
+    public AudioClip[] playerDeathSound;
+    
     public Animator leftFlash;
     public Animator rightFlash;
 
@@ -91,6 +93,10 @@ public class Player : MonoBehaviour
             if (playerLives == 0)
             {
                 gameManager.OnPlayerKilled(this);
+
+                //DeathSounds for player, it randomizes between the added in unity
+                int deathSound = Random.Range(0, playerDeathSound.Length);
+                SoundManager.instance.PlaySoundFXClip(playerDeathSound[deathSound], transform, 0.15f);
             }
         }
 
@@ -113,7 +119,10 @@ public class Player : MonoBehaviour
         }
         
         isLeftCannon = !isLeftCannon;
-        SoundManager.instance.PlaySoundFXClip(laserShootClip, transform, 0.5f);
+
+        //LaserSounds for the player, it randomizes between the added in unity
+        int laserSound = Random.Range(0, laserShootClip.Length);
+        SoundManager.instance.PlaySoundFXClip(laserShootClip[laserSound], transform, 0.4f);
     
         screenShake.TriggerShake(0.12f, 0.35f);
 

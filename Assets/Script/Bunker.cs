@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Bunker : MonoBehaviour
 {
+    public AudioClip[] HitSounds;
+
     int nrOfHits = 0;
     SpriteRenderer spRend;
     private void Awake()
@@ -21,6 +23,9 @@ public class Bunker : MonoBehaviour
 
             nrOfHits++;
             Color oldColor = spRend.color;
+
+            int hitSound = Random.Range(0, HitSounds.Length);
+            SoundManager.instance.PlaySoundFXClip(HitSounds[hitSound], transform, 0.2f);
 
             Color newColor = new Color(oldColor.r +(nrOfHits*0.1f), oldColor.g + (nrOfHits * 0.1f), oldColor.b + (nrOfHits * 0.1f));
             
