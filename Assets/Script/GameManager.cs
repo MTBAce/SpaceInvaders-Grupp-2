@@ -143,8 +143,11 @@ public class GameManager : MonoBehaviour
         GameObject spawnedDeathAnim = Instantiate(invaderDeathAnim, invader.gameObject.transform.position, Quaternion.identity);
 
         //DeathSounds for enemies, it randomizes between the added in unity
-        int deathSound = Random.Range(0, enemyDeathSounds.Length);
-        SoundManager.instance.PlaySoundFXClip(enemyDeathSounds[deathSound], transform, 0.2f);
+        if (enemyDeathSounds.Length >= 1)
+        {
+            int deathSound = Random.Range(0, enemyDeathSounds.Length);
+            SoundManager.instance.PlaySoundFXClip(enemyDeathSounds[deathSound], transform, 0.2f);
+        }
 
         Animator invaderAnimator = spawnedDeathAnim.GetComponent<Animator>();
         invaderAnimator.SetTrigger("InvaderDeath");

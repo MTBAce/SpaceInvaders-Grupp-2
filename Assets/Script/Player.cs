@@ -121,9 +121,12 @@ public class Player : MonoBehaviour
         isLeftCannon = !isLeftCannon;
 
         //LaserSounds for the player, it randomizes between the added in unity
-        int laserSound = Random.Range(0, laserShootClip.Length);
-        SoundManager.instance.PlaySoundFXClip(laserShootClip[laserSound], transform, 0.4f);
-    
+        if (laserShootClip.Length >= 1)
+        {
+            int laserSound = Random.Range(0, laserShootClip.Length);
+            SoundManager.instance.PlaySoundFXClip(laserShootClip[laserSound], transform, 0.4f);
+        }
+
         screenShake.TriggerShake(0.12f, 0.35f);
 
         //Debug.Log("Laser Cooldown before Power-up: " + laserCoolDown);
