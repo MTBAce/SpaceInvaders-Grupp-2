@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager2 : MonoBehaviour
 {
-    public void PlayAgain()
+    // Spela igen
+    public void PlayAgain() 
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         Time.timeScale = 1;
 
     }
+    // Tillbaka till mainmenu
 public void mainMenu()
 {
         SceneManager.LoadScene("MainMenu");
