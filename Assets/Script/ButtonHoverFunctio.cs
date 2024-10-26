@@ -18,7 +18,7 @@ public class ButtonHoverFunctio : MonoBehaviour
     void OnMouseEnter()
     {
         objectRenderer.enabled = true;
-        SoundManager.instance.PlaySoundFXClip(selectEffectClip, transform, 1);
+        SoundManager.instance.PlaySoundFXClip(selectEffectClip, transform, 1); //Playes sound effect when the mouse hovers over button
 
     }
     private void OnMouseExit()

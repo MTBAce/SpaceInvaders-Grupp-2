@@ -1138,6 +1138,8 @@ MonoBehaviour:
   gameOver: 0
   rand: 0
   invaderDeathAnim: {fileID: 6827323392578525806, guid: 2e2fdd1f3a264464f95508b044243281, type: 3}
+  playerDeathAnim: {fileID: 6285475113699923129, guid: a3ccadea0a8e26743aeac124d14977cb, type: 3}
+  mysteryShipDeathAnim: {fileID: 3788661918083102077, guid: 376c5c9ebcd1eca42a1de63a7f017e5e, type: 3}
 --- !u!4 &972938369
 Transform:
   m_ObjectHideFlags: 0
