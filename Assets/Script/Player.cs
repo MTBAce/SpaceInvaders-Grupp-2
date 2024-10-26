@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     {
         rand = gameManager.rand;
 
-
+        //Movemnt for the player
         Vector3 position = transform.position;
 
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
 
         transform.position = position;
 
+        //Shooting for the player, and the powerup2
         if (Input.GetKeyDown(KeyCode.Space) /*|| (Input.GetKeyDown(KeyCode.Mouse0))*/ && Time.time >= timeSinceShot + laserCoolDown)
         {
             Shoot();
@@ -80,6 +81,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Checks if the player is hit and if it dies 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Missile"))
@@ -102,6 +104,7 @@ public class Player : MonoBehaviour
 
     }
 
+    //Shooting and deciding what part of the ship the shot will come from and sound
     private void Shoot()
     {
         timeSinceShot = Time.time;
@@ -131,13 +134,14 @@ public class Player : MonoBehaviour
 
         //Debug.Log("Laser Cooldown before Power-up: " + laserCoolDown);
     }
-
+    //adds a life on collision
     public void AddLife(int amount)
     {
         playerLives += amount;
         Debug.Log("Added life. Current lives: " + playerLives);
     }
 
+    //gives the player faster shooting speed
     public void FastShooting(float duration)
     {
         float startLaserCoolDown = laserCoolDown;
@@ -147,13 +151,14 @@ public class Player : MonoBehaviour
         StartCoroutine(ShootCoroutine(duration, startLaserCoolDown));
     }
 
+    //makes the player shoot twice
     public void StartDoubleLaser (float duration)
     {
         StartCoroutine(LaserCoroutine(duration));
         
     }
 
-
+    //timer for powerups (all below)
     private IEnumerator ShootCoroutine(float duration, float startLaserCoolDown)
     {
         yield return new WaitForSeconds(duration);

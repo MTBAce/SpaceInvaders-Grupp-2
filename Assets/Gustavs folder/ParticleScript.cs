@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ParticleScript : MonoBehaviour
 {
+    //INTE RELEVANT BARA SKOJ
+
     public GameObject particle;
     private SpriteRenderer spriteRenderer;
 
@@ -19,7 +21,7 @@ public class ParticleScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 80; i++)
             {
                 GameObject newParticle = Instantiate(particle);
                 Rigidbody2D rb = newParticle.GetComponent<Rigidbody2D>();

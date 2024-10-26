@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //restarts the game
     private void NewGame()
     {
         GameOverText.SetActive(false);
@@ -85,6 +86,8 @@ public class GameManager : MonoBehaviour
 
     }
 
+
+    //starts a new round
     public void NewRound()
     {
         invaders.ResetInvaders();
@@ -101,6 +104,8 @@ public class GameManager : MonoBehaviour
 
 
     }
+
+    //respawns the player
 
     private void Respawn()
     {
@@ -129,6 +134,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //ends the game when the player is killed
     public void OnPlayerKilled(Player player)
     {
         GameObject spawnedPlayerDeathAnim = Instantiate(playerDeathAnim, player.gameObject.transform.position, Quaternion.identity);
@@ -138,6 +144,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    //manages if a powerup should spawn based on a certain amout of kills and what to do when a invader dies (sounds and such)
     public void OnInvaderKilled(Invader invader)
     {
         invader.gameObject.SetActive(false);
@@ -164,13 +171,16 @@ public class GameManager : MonoBehaviour
         }
 
         SetScore(score + 100);
-            
+        
+        //new round when all of the invaders are dead
+
         if (invaders.GetInvaderCount() == 0)
         {
             NewRound();
         }
     }
 
+    //the mysteryships effect on teh game
     public void OnMysteryShipKilled(MysteryShip mysteryShip)
     {
         GameObject spawnedMysteryShipDeathAnim = Instantiate(mysteryShipDeathAnim, mysteryShip.gameObject.transform.position, Quaternion.identity);

@@ -11,6 +11,7 @@ public class PowerUp : MonoBehaviour
 
     public PowerUpEffect powerUpEffect;
 
+    //adds effect on collision with the player
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -22,7 +23,7 @@ public class PowerUp : MonoBehaviour
         }
        
     }
-
+    //destroys the powerup after some time to not have it fall forever
     private void Update()
     {
         deathTimer += Time.deltaTime;

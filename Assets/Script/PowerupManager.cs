@@ -9,6 +9,7 @@ public class PowerUpManager : MonoBehaviour
     public GameObject Powerup2;
     public GameObject Powerup3;
 
+    //randomizes powerups
     public void SpawnPowerup(Vector3 position)
     {
         int rand = Random.Range(1, 4);
