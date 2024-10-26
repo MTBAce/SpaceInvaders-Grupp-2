@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
     public int rand;
     public GameObject invaderDeathAnim;
+    public GameObject playerDeathAnim;
+    public GameObject mysteryShipDeathAnim;
 
     private float kills = 0;
     public float invaderSpeed { get; private set; } = 0.8f;
@@ -129,6 +131,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerKilled(Player player)
     {
+        GameObject spawnedPlayerDeathAnim = Instantiate(playerDeathAnim, player.gameObject.transform.position, Quaternion.identity);
         player.gameObject.SetActive(false);  
         Debug.Log("Game Over");
         GameOver();
@@ -140,7 +143,8 @@ public class GameManager : MonoBehaviour
         invader.gameObject.SetActive(false);
         
    
-        GameObject spawnedDeathAnim = Instantiate(invaderDeathAnim, invader.gameObject.transform.position, Quaternion.identity);
+        GameObject spawnedInvaderDeathAnim = Instantiate(invaderDeathAnim, invader.gameObject.transform.position, Quaternion.identity);
+       
 
         //DeathSounds for enemies, it randomizes between the added in unity
         if (enemyDeathSounds.Length >= 1)
@@ -149,7 +153,7 @@ public class GameManager : MonoBehaviour
             SoundManager.instance.PlaySoundFXClip(enemyDeathSounds[deathSound], transform, 0.2f);
         }
 
-        Animator invaderAnimator = spawnedDeathAnim.GetComponent<Animator>();
+        Animator invaderAnimator = spawnedInvaderDeathAnim.GetComponent<Animator>();
         invaderAnimator.SetTrigger("InvaderDeath");
 
         kills += 1;
@@ -169,6 +173,7 @@ public class GameManager : MonoBehaviour
 
     public void OnMysteryShipKilled(MysteryShip mysteryShip)
     {
+        GameObject spawnedMysteryShipDeathAnim = Instantiate(mysteryShipDeathAnim, mysteryShip.gameObject.transform.position, Quaternion.identity);
         mysteryShip.gameObject.SetActive(false);
         SetScore(score + 500);
     }
