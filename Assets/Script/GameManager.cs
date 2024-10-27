@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using static UnityEditor.FilePathAttribute;
 using System;
+using Random = UnityEngine.Random;
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour

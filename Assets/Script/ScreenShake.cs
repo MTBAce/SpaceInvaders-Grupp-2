@@ -2,20 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Elliott
 public class ScreenShake : MonoBehaviour
 {
 
+    //Variables to control the length and how intense the screenshake should be
     float shakeMagnitude = 0;
     float shakeDuration = 0;
     float dampingSpeed = 1.0f;
 
-    private Vector3 initialPosition;
-    private float currentShakeDuration;
+    private Vector3 initialPosition; //Cameras inital position
+    private float currentShakeDuration; //Keeps track how long the screen has shaked
 
 
     void Start()
     {
-        initialPosition = transform.position;
+        initialPosition = transform.position; //Sets inital position
     }
 
 
@@ -39,8 +41,8 @@ public class ScreenShake : MonoBehaviour
 
     public void TriggerShake(float duration, float magnitude)
     {
-        shakeDuration = duration;    // Assign the duration parameter to shakeDuration
-        shakeMagnitude = magnitude;  // Assign the magnitude parameter to shakeMagnitude
-        currentShakeDuration = shakeDuration;  // Initialize the currentShakeDuration to start shaking
+        shakeDuration = duration;    // How long the shake should last
+        shakeMagnitude = magnitude;  // The strength of the shake
+        currentShakeDuration = shakeDuration; 
     }
 }
