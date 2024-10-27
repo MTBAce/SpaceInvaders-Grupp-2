@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
 
-    private PowerUpManager powerupManager; 
+    private PowerUpManager powerupManager;
 
+    public Canvas canvas;
+    public TextMeshProUGUI killScoreText;
     public GameObject GameOverText;
     public bool gameOver = false;
     public int rand;
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerDeathAnim;
     public GameObject mysteryShipDeathAnim;
 
+    private int mystershipPoints = 500;
+    private int killPoints = 100;
     private float kills = 0;
     public float invaderSpeed { get; private set; } = 0.8f;
 
@@ -170,8 +174,16 @@ public class GameManager : MonoBehaviour
            powerupManager.SpawnPowerup(invader.gameObject.transform.position);
         }
 
-        SetScore(score + 100);
-        
+        SetScore(score + killPoints);
+
+        //makes text saying how much score you get per normal kill
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(invader.transform.position);
+        TextMeshProUGUI instantiatedKillScoreText = Instantiate(killScoreText, screenPosition, Quaternion.identity, canvas.transform);
+        instantiatedKillScoreText.transform.position = instantiatedKillScoreText.transform.position + new Vector3(40, 0, 0);
+        instantiatedKillScoreText.GetComponent<TextMeshProUGUI>().text = ("+") + killPoints.ToString();
+
+        StartCoroutine(DetroyKillText(instantiatedKillScoreText, 0.7f));
+
         //new round when all of the invaders are dead
 
         if (invaders.GetInvaderCount() == 0)
@@ -185,7 +197,17 @@ public class GameManager : MonoBehaviour
     {
         GameObject spawnedMysteryShipDeathAnim = Instantiate(mysteryShipDeathAnim, mysteryShip.gameObject.transform.position, Quaternion.identity);
         mysteryShip.gameObject.SetActive(false);
-        SetScore(score + 500);
+        SetScore(score + mystershipPoints);
+
+        //makes text saying how much score you get per special kill, and change colour and size.
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(mysteryShip.transform.position);
+        TextMeshProUGUI instantiatedKillScoreText = Instantiate(killScoreText, screenPosition, Quaternion.identity, canvas.transform);
+        instantiatedKillScoreText.transform.position = instantiatedKillScoreText.transform.position + new Vector3(-1200, 0, 0);
+        instantiatedKillScoreText.GetComponent<TextMeshProUGUI>().text = ("+") + mystershipPoints.ToString();
+        instantiatedKillScoreText.color = Color.yellow;
+        instantiatedKillScoreText.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f); 
+
+        StartCoroutine(DetroyKillText(instantiatedKillScoreText, 0.7f));
     }
 
     public void OnBoundaryReached()
@@ -196,6 +218,13 @@ public class GameManager : MonoBehaviour
             Debug.Log("Disable Invaders, boundary");
             OnPlayerKilled(player);
         }
+    }
+
+    IEnumerator DetroyKillText(TextMeshProUGUI text, float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Destroying kill text 
+        Destroy(text);
     }
 
 }
