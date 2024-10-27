@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -17,13 +17,15 @@ public class Player : MonoBehaviour
     public Animator leftFlash;
     public Animator rightFlash;
 
-
     public Laser laserPrefab;
     public ScreenShake screenShake;
 
     GameObject rightLaserMuzzle;
     GameObject leftLaserMuzzle;
 
+    public GameObject LivesPrefab;
+    public Transform livesContainer;
+    private List<GameObject> lives = new List<GameObject> ();
 
     private GameManager gameManager;
 
@@ -50,6 +52,7 @@ public class Player : MonoBehaviour
 
         playerLives = GameManager.Instance.lives;
         Debug.Log("Player lives:" + playerLives);
+        UpdateLives();
     }
    public void Update()
     {
@@ -88,9 +91,11 @@ public class Player : MonoBehaviour
         {
             playerLives -= 1;
             Debug.Log("Player lives:" + playerLives);
+            UpdateLives();
 
             screenShake.TriggerShake(0.25f, 1.3f);
             SoundManager.instance.PlaySoundFXClip(hurtEffectClip, transform, 1f);
+          
 
             if (playerLives == 0)
             {
@@ -104,6 +109,20 @@ public class Player : MonoBehaviour
 
     }
 
+    public void UpdateLives()
+    {
+        foreach (GameObject heart in lives)
+        {
+            Destroy(heart);
+        }
+        lives.Clear();
+
+        for (int i = 0; i < playerLives; i++)
+        {
+            GameObject newHeart = Instantiate(LivesPrefab, livesContainer);
+            lives.Add(newHeart);
+        }
+    }
     //Shooting and deciding what part of the ship the shot will come from and sound
     private void Shoot()
     {
@@ -139,6 +158,7 @@ public class Player : MonoBehaviour
     {
         playerLives += amount;
         Debug.Log("Added life. Current lives: " + playerLives);
+        UpdateLives();
     }
 
     //gives the player faster shooting speed
