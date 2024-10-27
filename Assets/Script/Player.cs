@@ -40,8 +40,8 @@ public class Player : MonoBehaviour
     float timeSinceShot = 0f;
     float speed = 10f;
 
-     Vector3 leftCannonOffset = new Vector3(-1f, 2.4f, 0);
-     Vector3 rightCannonOffset = new Vector3(1f, 2.4f, 0);
+     Vector3 leftCannonOffset = new Vector3(-0.7f, 2.4f, 0);
+     Vector3 rightCannonOffset = new Vector3(0.7f, 2.4f, 0);
 
     private bool isLeftCannon = true;
 
