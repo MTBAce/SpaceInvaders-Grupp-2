@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Timeline.Actions;
 using TMPro;
+using Unity.VisualScripting;
+using static UnityEditor.FilePathAttribute;
+using System;
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
@@ -182,8 +185,6 @@ public class GameManager : MonoBehaviour
         instantiatedKillScoreText.transform.position = instantiatedKillScoreText.transform.position + new Vector3(40, 0, 0);
         instantiatedKillScoreText.GetComponent<TextMeshProUGUI>().text = ("+") + killPoints.ToString();
 
-        StartCoroutine(DetroyKillText(instantiatedKillScoreText, 0.7f));
-
         //new round when all of the invaders are dead
 
         if (invaders.GetInvaderCount() == 0)
@@ -200,14 +201,13 @@ public class GameManager : MonoBehaviour
         SetScore(score + mystershipPoints);
 
         //makes text saying how much score you get per special kill, and change colour and size.
+
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(mysteryShip.transform.position);
         TextMeshProUGUI instantiatedKillScoreText = Instantiate(killScoreText, screenPosition, Quaternion.identity, canvas.transform);
         instantiatedKillScoreText.transform.position = instantiatedKillScoreText.transform.position + new Vector3(-1200, 0, 0);
         instantiatedKillScoreText.GetComponent<TextMeshProUGUI>().text = ("+") + mystershipPoints.ToString();
         instantiatedKillScoreText.color = Color.yellow;
-        instantiatedKillScoreText.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f); 
-
-        StartCoroutine(DetroyKillText(instantiatedKillScoreText, 0.7f));
+        instantiatedKillScoreText.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     public void OnBoundaryReached()
@@ -218,13 +218,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("Disable Invaders, boundary");
             OnPlayerKilled(player);
         }
-    }
-
-    IEnumerator DetroyKillText(TextMeshProUGUI text, float time)
-    {
-        yield return new WaitForSeconds(time);
-        // Destroying kill text 
-        Destroy(text);
     }
 
 }
