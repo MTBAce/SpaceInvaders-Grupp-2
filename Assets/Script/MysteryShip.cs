@@ -12,6 +12,7 @@ public class MysteryShip : MonoBehaviour
     Vector2 rightDestination;
     int direction = -1;
     bool isVisible;
+    public GameObject BunkerRepair;
 
     
     void Start()
@@ -85,8 +86,10 @@ public class MysteryShip : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
+            Instantiate(BunkerRepair, transform.position, Quaternion.identity);
             SetInvisible();
             GameManager.Instance.OnMysteryShipKilled(this);
+            
         }
     }
 }

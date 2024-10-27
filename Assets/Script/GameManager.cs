@@ -7,6 +7,8 @@ using TMPro;
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
 {
+   
+
     public AudioClip[] enemyDeathSounds;
 
     public TextMeshProUGUI scoreText;
@@ -68,7 +70,9 @@ public class GameManager : MonoBehaviour
      
 
         NewGame();
+
     }
+
 
     private void Update()
     {
