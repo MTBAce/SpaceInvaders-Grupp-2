@@ -86,7 +86,7 @@ public class MysteryShip : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
-            Instantiate(BunkerRepair, transform.position, Quaternion.identity);
+            Instantiate(BunkerRepair, transform.position, Quaternion.identity); //Spawnar BunkerRepair
             SetInvisible();
             GameManager.Instance.OnMysteryShipKilled(this);
             

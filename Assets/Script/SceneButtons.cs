@@ -6,20 +6,20 @@ using UnityEngine.UI;
 
 public class SceneButtons : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     public void StartGame()
     {
         SceneManager.LoadScene(0);
     }
 
-    // Update is called once per frame
+    
     public void Credits()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(2); //credits scenen
     }
     public void QuitGame()
     {
-        Debug.Log("Quit Game");
+        Debug.Log("Quit Game"); //Avslutar build
         Application.Quit();
     }
 }
