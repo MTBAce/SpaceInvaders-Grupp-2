@@ -12,7 +12,7 @@ public class BunkerRepair : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            DeleteBunkers();
+            DeleteBunkers();//Tar bort existerande bunkrar
            
             if (Bunkers.Length == 4 && spawnPositions.Length == 4) //bunkrar spawnar på en viss position när du plockar upp poweruppen
             {

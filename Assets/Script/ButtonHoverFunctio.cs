@@ -12,12 +12,12 @@ public class ButtonHoverFunctio : MonoBehaviour
     {
         objectRenderer = GetComponent<Renderer>();
 
-        objectRenderer.enabled = false;
+        objectRenderer.enabled = false; //hides on start
     }
         
     void OnMouseEnter()
     {
-        objectRenderer.enabled = true;
+        objectRenderer.enabled = true; //shows on hover
         SoundManager.instance.PlaySoundFXClip(selectEffectClip, transform, 1); //Playes sound effect when the mouse hovers over button
 
     }
