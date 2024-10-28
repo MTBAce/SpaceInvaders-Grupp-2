@@ -11,11 +11,12 @@ using Random = UnityEngine.Random;
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
 {
-   
 
+    public int numberOfRounds = 0;
     public AudioClip[] enemyDeathSounds;
 
     public TextMeshProUGUI scoreText;
+    private Music music;
 
     public static GameManager Instance { get; private set; }
 
@@ -23,9 +24,11 @@ public class GameManager : MonoBehaviour
     private Invaders invaders;
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
+    private Projectile projectile;
 
     private PowerUpManager powerupManager;
 
+    public TextMeshProUGUI roundCounter;
     public Canvas canvas;
     public TextMeshProUGUI killScoreText;
     public GameObject GameOverText;
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour
         invaders = FindObjectOfType<Invaders>();
         mysteryShip = FindObjectOfType<MysteryShip>();
         bunkers = FindObjectsOfType<Bunker>();
+        music = FindObjectOfType<Music>();
 
         powerupManager = FindObjectOfType<PowerUpManager>();
      
@@ -93,6 +97,11 @@ public class GameManager : MonoBehaviour
         SetScore(0);
         SetLives(3);
 
+        // Reset music speed when starting a new game
+        music.speed = 0.95f;
+        music.Speed(0.0f); // Reset to base speed, if needed
+
+        numberOfRounds = 0;
 
         NewRound();
 
@@ -102,19 +111,38 @@ public class GameManager : MonoBehaviour
     //starts a new round
     public void NewRound()
     {
+        if (invaders == null)
+        {
+            Debug.LogError("Invaders reference is missing.");
+            return;
+        }
+        if (bunkers == null || bunkers.Length == 0)
+        {
+            Debug.LogError("Bunkers are missing.");
+            return;
+        }
+
+        numberOfRounds++;
+        Debug.Log(numberOfRounds);
+        roundCounter.text = numberOfRounds.ToString();
+        // changes colour for the text
+        Color currentColor = roundCounter.color;
+        currentColor.g = Mathf.Clamp01(currentColor.g - 0.1f);
+        currentColor.b = Mathf.Clamp01(currentColor.b - 0.05f);
+        currentColor.r = Mathf.Clamp01(currentColor.r - 0.05f);
+
+        roundCounter.color = currentColor;
+
         invaders.ResetInvaders();
         invaders.gameObject.SetActive(true);
 
         float newInvaderSpeed = invaderSpeed * 1.15f;
+
         invaderSpeed = newInvaderSpeed;
-        Debug.Log("Invader Speed: " + invaderSpeed);
 
-        for (int i = 0; i < bunkers.Length; i++)
-        {
-            bunkers[i].ResetBunker();
-        }
-
-
+        Debug.Log("Invader Speed updated: " + invaderSpeed);
+        music.Speed(0.05f);
+        Debug.Log("New music speed " + music.speed);
     }
 
     //respawns the player
@@ -154,16 +182,26 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over");
         GameOver();
 
+        music.audioSource.Stop();
+        music.speed = 0.95f;
     }
 
     //manages if a powerup should spawn based on a certain amout of kills and what to do when a invader dies (sounds and such)
     public void OnInvaderKilled(Invader invader)
     {
-        invader.gameObject.SetActive(false);
-        
-   
+        if (invaderDeathAnim == null)
+        {
+            Debug.LogError("invaderDeathAnim is not assigned.");
+            return;
+        }
         GameObject spawnedInvaderDeathAnim = Instantiate(invaderDeathAnim, invader.gameObject.transform.position, Quaternion.identity);
-       
+        Animator invaderAnimator = spawnedInvaderDeathAnim.GetComponent<Animator>();
+
+        if (invaderAnimator != null)
+        {
+            invaderAnimator.SetTrigger("InvaderDeath");
+        }
+        invader.gameObject.SetActive(false);
 
         //DeathSounds for enemies, it randomizes between the added in unity
         if (enemyDeathSounds.Length >= 1)
@@ -172,7 +210,6 @@ public class GameManager : MonoBehaviour
             SoundManager.instance.PlaySoundFXClip(enemyDeathSounds[deathSound], transform, 0.2f);
         }
 
-        Animator invaderAnimator = spawnedInvaderDeathAnim.GetComponent<Animator>();
         invaderAnimator.SetTrigger("InvaderDeath");
 
         kills += 1;
@@ -187,7 +224,6 @@ public class GameManager : MonoBehaviour
         //makes text saying how much score you get per normal kill
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(invader.transform.position);
         TextMeshProUGUI instantiatedKillScoreText = Instantiate(killScoreText, screenPosition, Quaternion.identity, canvas.transform);
-        instantiatedKillScoreText.transform.position = instantiatedKillScoreText.transform.position + new Vector3(40, 0, 0);
         instantiatedKillScoreText.GetComponent<TextMeshProUGUI>().text = ("+") + killPoints.ToString();
 
         //new round when all of the invaders are dead
@@ -198,21 +234,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //the mysteryships effect on teh game
+    //the mysteryships effect on the game
     public void OnMysteryShipKilled(MysteryShip mysteryShip)
     {
-        GameObject spawnedMysteryShipDeathAnim = Instantiate(mysteryShipDeathAnim, mysteryShip.gameObject.transform.position, Quaternion.identity);
-        mysteryShip.gameObject.SetActive(false);
-        SetScore(score + mystershipPoints);
+        GameObject spawnedMysteryShipDeathAnim = Instantiate(mysteryShipDeathAnim, mysteryShip.transform.position, Quaternion.identity);
 
         //makes text saying how much score you get per special kill, and change colour and size.
 
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(mysteryShip.transform.position);
         TextMeshProUGUI instantiatedKillScoreText = Instantiate(killScoreText, screenPosition, Quaternion.identity, canvas.transform);
-        instantiatedKillScoreText.transform.position = instantiatedKillScoreText.transform.position + new Vector3(-1200, 0, 0);
-        instantiatedKillScoreText.GetComponent<TextMeshProUGUI>().text = ("+") + mystershipPoints.ToString();
+
+        instantiatedKillScoreText.GetComponent<TextMeshProUGUI>().text = ("+") + killPoints.ToString();
+        SetScore(score + mystershipPoints);
+        mysteryShip.gameObject.SetActive(false);
+
+        // set the score text and appearance
+        instantiatedKillScoreText.text = ("+") + mystershipPoints.ToString();
         instantiatedKillScoreText.color = Color.yellow;
-        instantiatedKillScoreText.transform.localScale = new Vector3(1f, 1f, 1f);
+        instantiatedKillScoreText.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
     }
 
     public void OnBoundaryReached()

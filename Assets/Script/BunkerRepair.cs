@@ -6,6 +6,7 @@ public class BunkerRepair : MonoBehaviour
 {
     public GameObject[] Bunkers = new GameObject[4];
     public Vector2[] spawnPositions = new Vector2[4];
+    public AudioClip spawnSound;
 
     public string bunkerTag = "Bunker";
     private void OnTriggerEnter2D(Collider2D collision) 
@@ -20,6 +21,8 @@ public class BunkerRepair : MonoBehaviour
                 for (int i = 0; i < Bunkers.Length; i++)
                 {
                     Instantiate(Bunkers[i], spawnPositions[i], Quaternion.identity);
+
+                    SoundManager.instance.PlaySoundFXClip(spawnSound, transform, 0.3f);
                 }
             }
             else

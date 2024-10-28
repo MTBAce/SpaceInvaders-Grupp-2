@@ -8,7 +8,7 @@ public class Invaders : MonoBehaviour
 {
     public Invader[] prefab = new Invader[4];
 
-    private int row = 4;
+    public int row = 4;
     private int col = 11;
     private float invaderSpeed;
 
@@ -30,14 +30,11 @@ public class Invaders : MonoBehaviour
     private void Start()
     {
         InvokeRepeating(nameof(MissileAttack), 1, 1); //Hur ofta ska den skjuta iväg missiler
-        gameManager = FindObjectOfType<GameManager>();
-
-        
-        
+        gameManager = FindObjectOfType<GameManager>();     
     }
 
     //Skapar själva griden med alla invaders.
-    void CreateInvaderGrid()
+    public void CreateInvaderGrid()
     {
         for(int r = 0; r < row; r++)
         {
@@ -95,7 +92,7 @@ public class Invaders : MonoBehaviour
 
 
                 float rand = UnityEngine.Random.value;
-                if (rand < 0.2)
+                if (rand < 0.1f + gameManager.numberOfRounds/15)
                 {
                     Instantiate(missilePrefab, invader.position + new Vector3(0, -2f, 0), Quaternion.identity);
                     break;

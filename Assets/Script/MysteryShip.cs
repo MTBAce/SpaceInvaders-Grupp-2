@@ -58,7 +58,7 @@ public class MysteryShip : MonoBehaviour
     }
 
   
-    //flyttar den till en plast precis utanför scenen.
+    //flyttar den till en plats precis utanför scenen.
     void SetInvisible()
     {
         isVisible = false;
@@ -87,7 +87,6 @@ public class MysteryShip : MonoBehaviour
         if(collision.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
             Instantiate(BunkerRepair, transform.position, Quaternion.identity);
-            SetInvisible();
             GameManager.Instance.OnMysteryShipKilled(this);
             
         }
