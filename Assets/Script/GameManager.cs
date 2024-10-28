@@ -1,11 +1,5 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Timeline.Actions;
 using TMPro;
-using Unity.VisualScripting;
-using static UnityEditor.FilePathAttribute;
-using System;
 using Random = UnityEngine.Random;
 
 [DefaultExecutionOrder(-1)]
@@ -24,6 +18,7 @@ public class GameManager : MonoBehaviour
     private Invaders invaders;
     private MysteryShip mysteryShip;
     private Bunker[] bunkers;
+    private Bunker bunker;
     private Projectile projectile;
 
     private PowerUpManager powerupManager;
@@ -159,8 +154,17 @@ public class GameManager : MonoBehaviour
     {
         //invaders.gameObject.SetActive(false);
         mysteryShip.gameObject.SetActive(false);
+        BunkerDeactivate();
         GameOverText.SetActive(true);
         gameOver = true;
+    }
+
+    private void BunkerDeactivate()
+    {
+        for (int i = 0; i < bunkers.Length; i++)
+        {
+            bunkers[i].Deactivate();
+        }
     }
 
     private void SetScore(int newScore)
@@ -222,8 +226,7 @@ public class GameManager : MonoBehaviour
         SetScore(score + killPoints);
 
         //makes text saying how much score you get per normal kill
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(invader.transform.position);
-        TextMeshProUGUI instantiatedKillScoreText = Instantiate(killScoreText, screenPosition, Quaternion.identity, canvas.transform);
+        TextMeshProUGUI instantiatedKillScoreText = Instantiate(killScoreText, invader.transform.position, Quaternion.identity, canvas.transform);
         instantiatedKillScoreText.GetComponent<TextMeshProUGUI>().text = ("+") + killPoints.ToString();
 
         //new round when all of the invaders are dead
@@ -241,8 +244,7 @@ public class GameManager : MonoBehaviour
 
         //makes text saying how much score you get per special kill, and change colour and size.
 
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(mysteryShip.transform.position);
-        TextMeshProUGUI instantiatedKillScoreText = Instantiate(killScoreText, screenPosition, Quaternion.identity, canvas.transform);
+        TextMeshProUGUI instantiatedKillScoreText = Instantiate(killScoreText, mysteryShip.transform.position, Quaternion.identity, canvas.transform);
 
         instantiatedKillScoreText.GetComponent<TextMeshProUGUI>().text = ("+") + killPoints.ToString();
         SetScore(score + mystershipPoints);

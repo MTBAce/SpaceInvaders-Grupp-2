@@ -46,4 +46,9 @@ public class Bunker : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
+
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
+    }
 }
